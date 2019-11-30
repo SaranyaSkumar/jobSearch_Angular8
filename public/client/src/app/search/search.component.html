@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="home-page" style="padding: 20px 20px 20px 20px;width: 100%;text-align: center;position: absolute">
+  <div class="row" *ngIf="loading" style="position: absolute;
+  margin-top: 15%;
+  left: 50%;">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 8rem;color:black"></i>
+  </div>
+  <div *ngIf="!loading">
+    <div class="row" style="background-color: #2f281b; height: 300px;color: white;font-size: 18px; padding: 50px 50px 50px 50px;">
+      <div class="col-sm-6">
+        <label for="title" style="padding: 0 10px 0px 10px;">Job Role</label>
+        <input style="margin-left: 20px;" type="text" id="title" [(ngModel)]="title" name="title"><br>
+        <label for="skills" style="padding: 0 10px 0px 10px;"> Skills </label>
+        <input style="margin-left: 48px;" type="text" id="skills" [(ngModel)]="skills" name="skills">
+      </div><br>
+      <div class="col-sm-6">
+        <label for="location" style="padding: 0 10px 0px 10px;">Location</label>
+        <input style="margin-left: 41px;" type="text" id="location"  [(ngModel)]="location" name="location"><br>
+        <label for="experience" style="padding: 0 10px 0px 10px;">Experience</label>
+        <input style="margin-left: 20px;" type="text" id="experience"  [(ngModel)]="experience" name="experience">
+      </div>
+
+      <div class="col-sm-12" align="center">
+        <br><br>
+        <button type="button" class="btn btn-outline-secondary" style="color: white" (click)="searchJobs(title, skills, location, experience)">Find Matchings</button>
+      </div>
+
+    </div>
+    <div *ngIf="!subLoader && jobs.length>0" class="col-md-8" style="padding: 30px 30px 30px 30px;margin-left: 15%;text-align: left">
+      <div *ngFor="let job of jobs">
+        <div class="card" style="background-color: rgba(128,128,128,0.21)" >
+          <div class="card-body">
+            <div class="row" style="padding-left: 30px">
+              <div class="col-md-8">
+                <h5>{{job.title}}</h5>
+                <div class="content" style="padding-left: 20px">
+                  <h6>{{job.companyname}}</h6>
+                  <span *ngIf="job.experience" style="padding-right: 20px">Exp: {{job.experience}}</span>
+                  <span *ngIf="job.location">location: {{job.location}}</span><br>
+                  <span *ngIf="job.skills">Qualifications: {{job.skills}}</span><br>
+                  <span *ngIf="job.created">Job Posted: {{job.created}}</span><br>
+                  <span *ngIf="job.jd">Description: {{job.jd}}</span>
+                </div>
+              </div>
+              <div class="col-md-4" style="padding-top: 20px">
+                <button type="button" class="btn btn-outline-secondary" style="color: black" (click)="redirect(job)">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div><br>
+      </div>
+    </div>
+    <div *ngIf="!subLoader && jobs.length==0" class="col-md-12" style="margin-top: 70px">
+      <div>
+        OOPS...!!!No jobs matching with your selection now...
+      </div>
+      <img style="width: 10%;height: 10%" src="https://www.pinclipart.com/picdir/middle/85-859532_face-sadness-smiley-computer-icons-clip-art-sad.png">
+    </div>
+    <div *ngIf="subLoader" class="col-md-12" style="margin-top: 70px">
+      <div>
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 8rem;color:black"></i>
+      </div>
+    </div>
+
+  </div>
+
+</div>
