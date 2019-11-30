@@ -14,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "node app.js",
-    "start": "node app.js"
+    "start": "node app.js && cd public/client/ && ng serve"
   },
   "author": "Saranya S kumar",
   "license": "ISC"

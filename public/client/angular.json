@@ -92,9 +92,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [{
-              "start": "ng serve"
-            }]
+            "scripts": []
           }
         },
         "lint": {
