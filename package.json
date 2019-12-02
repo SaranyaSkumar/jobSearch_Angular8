@@ -14,7 +14,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "node app.js",
-    "start": "node app.js && cd public/client/ && ng serve"
+    "start": "node app.js",
+    "postinstall": "ng build --aot --prod"
   },
   "author": "Saranya S kumar",
   "license": "ISC"
