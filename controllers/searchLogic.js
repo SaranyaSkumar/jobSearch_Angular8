@@ -6,7 +6,9 @@ module.exports = app => {
 
     app.get('/search', function (req, res) {
         let postData = req.query;
-        console.log("postData", postData)
+        console.log("postData", postData);
+        let offset= Number(postData.offset);
+        let count= Number(postData.count)+offset;
         var options = { method: 'GET',
             url: 'https://nut-case.s3.amazonaws.com/jobs.json',
             json: true, //little convenience flag to set the requisite JSON headers
@@ -15,7 +17,7 @@ module.exports = app => {
         var filter = {
             title: postData.title?postData.title:'',
             location: postData.location?postData.location:'',
-            experience: postData.experience?postData.experience:'',
+            companyname: postData.company?postData.company:'',
             skills: postData.skills?postData.skills:''
         };
 
@@ -32,13 +34,20 @@ module.exports = app => {
                 return true;
             });
             console.log(body.length);
+            let result={
+                length: body.length
+            };
             res.header("Access-Control-Allow-Origin", "*");
             if(postData && !postData.count){
-                body= body.slice(0, 20);
-                res.json(body);
+                body= body.slice(0, 10);
+                result.data= body;
+                res.json(result);
             }else {
-                body= body.slice(0, postData.count);
-                res.json(body);
+                console.log("offset", offset, count)
+                body= body.slice(offset, count);
+                console.log("aftr", body.length);
+                result.data= body;
+                res.json(result);
             }
         });
     });

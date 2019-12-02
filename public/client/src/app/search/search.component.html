@@ -16,18 +16,23 @@
       <div class="col-sm-6">
         <label for="location" style="padding: 0 10px 0px 10px;">Location</label>
         <input style="margin-left: 41px;" type="text" id="location"  [(ngModel)]="location" name="location"><br>
-        <label for="experience" style="padding: 0 10px 0px 10px;">Experience</label>
-        <input style="margin-left: 20px;" type="text" id="experience"  [(ngModel)]="experience" name="experience">
+        <label for="company" style="padding: 0 10px 0px 10px;">Company</label>
+        <input style="margin-left: 20px;" type="text" id="company"  [(ngModel)]="company" name="company">
       </div>
 
       <div class="col-sm-12" align="center">
         <br><br>
-        <button type="button" class="btn btn-outline-secondary" style="color: white" (click)="searchJobs(title, skills, location, experience)">Find Matchings</button>
+        <button type="button" class="btn btn-outline-secondary" style="color: white" (click)="searchJobs(title, skills, location, company)">Find Matchings</button>
       </div>
 
     </div>
-    <div *ngIf="!subLoader && jobs.length>0" class="col-md-8" style="padding: 30px 30px 30px 30px;margin-left: 15%;text-align: left">
-      <div *ngFor="let job of jobs">
+    <div class="col-md-8" *ngIf="!subLoader && jobs.length>0" style="padding: 30px 30px 30px 30px;margin-left: 15%;text-align: left">
+      <div>
+        <div class="alert">
+          Jobs Found: <strong>{{jobCount}}</strong>
+        </div>
+      </div>
+      <div *ngFor="let job of jobs" >
         <div class="card" style="background-color: rgba(128,128,128,0.21)" >
           <div class="card-body">
             <div class="row" style="padding-left: 30px">
@@ -48,6 +53,14 @@
             </div>
           </div>
         </div><br>
+      </div>
+    </div>
+    <div *ngIf="!subLoader && jobs.length>0" class="row">
+      <div class="col-md-6">
+        <button *ngIf="offset>0" type="button" class="btn btn-outline-secondary" style="color: black" (click)="back()">Back</button>
+      </div>
+      <div class="col-md-6" *ngIf="jobs.length+1>10">
+        <button type="button" class="btn btn-outline-secondary" style="color: black" (click)="next()">Next</button>
       </div>
     </div>
     <div *ngIf="!subLoader && jobs.length==0" class="col-md-12" style="margin-top: 70px">

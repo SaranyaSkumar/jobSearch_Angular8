@@ -15,10 +15,11 @@ export class SearchService {
   }
 
   getAllJobs(payload) {
-    return this.http.get(this.apiEndpoint + '/search?title='+payload.title+'&skills='+
-      payload.skills+'&location='+payload.location+'&experience='+payload.experience+'&count='+payload.count)
+    return this.http.get(this.apiEndpoint + '/search?title=' + payload.title + '&skills=' +
+      payload.skills + '&location=' + payload.location + '&company=' + payload.company + '&count=' + payload.count + '&offset=' + payload.offset)
       .pipe(map((data =>
         data)));
   }
+
 }
 
