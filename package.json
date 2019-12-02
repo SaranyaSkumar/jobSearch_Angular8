@@ -52,7 +52,7 @@
     "ng": "ng",
     "test": "node app.js",
     "start": "node app.js",
-    "postinstall": "cd /public/client && ng build --aot --prod"
+    "postinstall": "ng build --prod"
   },
   "author": "Saranya S kumar",
   "license": "ISC",

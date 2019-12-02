@@ -15,6 +15,7 @@ search(app);
 // app.sq= require('./app/db/model');
 // app.user = require('./app/db/model/user')(app.sq,null);
 
+app.route('/*', function(req,res) { res.redirect(__dirname + '/dist/client/index.html') })
 
 const server = app.listen(port, () => {
     let host = server.address().address;
