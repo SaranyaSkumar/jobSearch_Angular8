@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node app.js",
+    "start": "pm2 start \"ng serve\" --name sysmon-app && pm2 start \"node app.js\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
