@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="formPage" style="padding:10rem 30px 30px 30px;width: 100%;text-align: center;position: absolute">
+    <h2>Register</h2>
+    <div><br>
+        Name: <input type="text" placeholder="name" [(ngModel)]="name"><br><br>
+        Email: <input type="email" placeholder="email" [(ngModel)]="email"><br><br>
+        Mobile: <input type="number" placeholder="Mobile" [(ngModel)]="mobile"><br><br>
+    </div>
+        <button type="button" class="btn btn-outline-secondary" style="color: black" routerLink="/search" (click)="storeData(name, email, mobile)">Register Here</button>
+</div>
