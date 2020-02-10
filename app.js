@@ -6,12 +6,16 @@ const Sequelize =  require('sequelize')
 const bodyParser = require('body-parser')
 const search = require('./controllers/searchLogic');
 const login = require('./controllers/loginController');
+const cors = require('cors');
 
 const port = process.env.PORT || 5500;
 app.set('port', port);
+app.use(cors())
 
 let models = require('./models/connetion');
 app.models = models;
+
+app.use(cors());
 
 let user = require('./models/model/user');
 app.use(express.json({limit: '2mb'}));
