@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  APIEndpoint: "https://searchjobs.herokuapp.com/"
+  APIEndpoint: "http://13.235.114.80"
 };
