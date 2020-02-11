@@ -12,7 +12,8 @@ export class FormService {
   constructor(private http: HttpClient) { }
 
   register(payload) {
-    console.log('payload', payload)
+    console.log('payload', payload);
+    console.log('endpoint', this.apiEndpoint + '/register');
     return this.http.post(this.apiEndpoint + '/register', payload)
         .pipe(map((data =>
             data)));
