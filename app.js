@@ -8,6 +8,7 @@ const search = require('./controllers/searchLogic');
 const login = require('./controllers/loginController');
 const cors = require('cors');
 
+console.log("app.js.............")
 const port = process.env.PORT || 5500;
 app.set('port', port);
 app.use(cors())
