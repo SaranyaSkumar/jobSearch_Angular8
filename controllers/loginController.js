@@ -7,7 +7,11 @@ module.exports = app => {
         console.log("postData", postData)
         users.create(postData).then(data=>{
             console.log("datadata",data)
-            res.status(200).json({message: 'success', data: postData})
+            if(data){
+                res.status(200).json({message: 'success', data: postData})
+            }else {
+                es.status(400).json({message: 'error', data: 'user creation failed'})
+            }
         }).catch((e)=>{
             res.status(400).json({message: 'error', data: e})
         })
